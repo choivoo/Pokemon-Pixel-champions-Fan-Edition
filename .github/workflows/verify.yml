@@ -1,0 +1,36 @@
+name: Verify JavaScript and server dependencies
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install PvP server dependencies
+        run: npm install --no-audit --no-fund
+        working-directory: server
+      - name: Syntax check server
+        run: node --check server/index.cjs
+      - name: Check browser scripts syntax
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const vm = require('node:vm');
+          for (const file of ['index.html', 'online.html']) {
+            const html=fs.readFileSync(file,'utf8');
+            const scripts=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)];
+            if(!scripts.length) throw new Error('No JavaScript scripts in '+file);
+            for (const [,source] of scripts) new vm.Script(source,{filename:file});
+            console.log(file+': syntax OK');
+          }
+          NODE
+      - name: Showdown import smoke test
+        run: node -e "const s=require('pokemon-showdown'); if(!s.BattleStream||!s.getPlayerStreams)process.exit(1); console.log('Showdown APIs available')"
+        working-directory: server
