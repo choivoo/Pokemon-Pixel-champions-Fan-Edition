@@ -13,7 +13,7 @@
 
 ## Release blockers
 1. GitHub Pages workflow success and public URL response have not been verified.
-2. Node backend is NOT deployed to any Render service. The Render account/service must be connected or created, then HTTPS/WSS address configured.
+2. Render web service has been CREATED (srv-dbfu1ut9el5s73ba2g50; https://pixel-champions-pvp.onrender.com). Initial build was in progress at last inspection. The HTTPS/WSS endpoint is now configured in online.html but deployment success has not yet been established.
 3. No end-to-end two-player or mobile acceptance test has been run; user intends to do gameplay QA personally.
 4. Visual battle UI remains a basic protocol/command console; complex multi-active Showdown requests, team previews, multi-action choices and error recovery are incomplete.
 5. Offline game remains simplified rules rather than a full Showdown-powered single player mode.
