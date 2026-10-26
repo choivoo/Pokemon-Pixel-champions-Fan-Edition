@@ -16,3 +16,13 @@ GitHub Actions workflow: `.github/workflows/pages.yml`. Set Settings → Pages �
 A real Showdown-powered competitive mode needs a separately hosted Node.js service, authoritative battle simulator and WebSocket request protocol. GitHub Pages serves static files only. See https://github.com/smogon/pokemon-showdown , https://github.com/smogon/pokemon-showdown/blob/master/PROTOCOL.md and https://pokeapi.co/.
 
 Pokémon images, logos and gameplay IP remain subject to their respective owners' rights; Pokémon sprites are sourced from https://github.com/PokeAPI/sprites. Review these rights before publishing or distributing further.
+
+
+## Showdown PvP proof of concept (server deployment required)
+
+- Static browser client: [online.html](./online.html)
+- Node server: [server/index.cjs](./server/index.cjs)
+- From server/: run `npm install`, then `npm start` with Node.js. Set environment variables `PORT` and `ALLOWED_ORIGIN=https://choivoo.github.io` when deploying. Use a TLS-enabled host with WebSocket support; its secure wss:// endpoint must be supplied in online.html.
+- Two connected players queue for the same format. Choices are sent to the official Showdown simulator through per-player streams. Gen 7 random battle supports Mega Evolution and Z-Moves where the generated team enables them, and Gen 9 random battle supports Terastallization.
+- This is an experimental protocol UI, not a tested, production PvP system. The backend is not hosted on GitHub Pages. There is no ranking, authentication, reconnection, moderation or validated competitive team builder.
+- The downloadable v1.1 archive remains separate from the hosted simplified single-file preview and has **not** been uploaded as full expanded source.
