@@ -1,20 +1,22 @@
-# Pixel Champions release readiness
+# Pixel Champions — release status (2026-10-27)
 
-Current status: **Release candidate / unverified**, NOT a confirmed production v1.0.
+**Status: Public release not yet verified.**
 
-## Included in GitHub
-- Static pixel-map story prototype with 18 Pokémon and five chapters
-- Experimental Showdown stream-based random battle matchmaking (Gen 7 and Gen 9)
-- Browser PvP client with moves, switching, and special mechanic actions
-- GitHub Pages and JavaScript validation GitHub Actions
-- Render configuration for an independently hosted Node WebSocket backend
+## Implemented in GitHub
+- Offline single-page pixel story and AI battle prototype
+- Gen 7 / Gen 9 Showdown-backed PvP service source
+- Gen 7 OU / Gen 9 OU teams imported as Showdown text and checked by TeamValidator
+- Random battle queue and custom team queue, secure player-separated simulator streams
+- Technology-specific move actions for Mega Evolution / Z-Moves / Terastallization when legal
+- Root-level `render.yaml` for Node backend and GitHub Actions for static Pages
+- Basic health endpoint, connection cap, configurable browser origin
 
-## Remaining blockers for public v1.0
-- Successful GitHub Actions run and published URL verification
-- Successful server install and integration test of two players to a finished battle
-- Actual TLS WebSocket hosting and stable server endpoint
-- Team builder with EVs/IVs, abilities, held items, legal format validation
-- Full Showdown protocol UI, error recovery, team preview, reconnection, safe public matchmaking
-- Abuse prevention, reporting, monitoring, game content asset licensing review
+## Release blockers
+1. GitHub Pages workflow success and public URL response have not been verified.
+2. Node backend is NOT deployed to any Render service. The Render account/service must be connected or created, then HTTPS/WSS address configured.
+3. No end-to-end two-player or mobile acceptance test has been run; user intends to do gameplay QA personally.
+4. Visual battle UI remains a basic protocol/command console; complex multi-active Showdown requests, team previews, multi-action choices and error recovery are incomplete.
+5. Offline game remains simplified rules rather than a full Showdown-powered single player mode.
+6. Public service requires abuse controls and rights/licensing review of Pokémon media.
 
-No claim is made that a GitHub Pages deployment itself hosts a working PvP backend. Game trademarks and artwork belong to their owners.
+These gaps mean 1.0 complete or fully playable public online PvP must not be claimed.
