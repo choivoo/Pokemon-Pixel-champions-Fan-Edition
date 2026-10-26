@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: pixel-champions-pvp
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install --omit=dev --no-audit
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGIN
+        value: https://choivoo.github.io
