@@ -16,7 +16,7 @@ function buildTeam(raw,format){
  const parsed=Teams.import(raw);
  if(!parsed||!Array.isArray(parsed)||parsed.length!==6)throw Error('정확히 6마리 팀이 필요합니다.');
  const packed=Teams.pack(parsed);
- const errors=TeamValidator.get(format).validateTeam(packed);
+ const errors=TeamValidator.get(format).validateTeam(parsed);
  if(errors?.length)throw Error(errors.slice(0,5).join(' / ').slice(0,600));
  return packed;
 }
