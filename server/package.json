@@ -1,0 +1,13 @@
+{
+  "name": "pixel-champions-pvp",
+  "private": true,
+  "version": "0.2.0",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.cjs"
+  },
+  "dependencies": {
+    "pokemon-showdown": "^0.11.0",
+    "ws": "^8.18.0"
+  }
+}
