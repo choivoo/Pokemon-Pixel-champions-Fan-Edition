@@ -26,3 +26,9 @@ Pokémon images, logos and gameplay IP remain subject to their respective owners
 - Two connected players queue for the same format. Choices are sent to the official Showdown simulator through per-player streams. Gen 7 random battle supports Mega Evolution and Z-Moves where the generated team enables them, and Gen 9 random battle supports Terastallization.
 - This is an experimental protocol UI, not a tested, production PvP system. The backend is not hosted on GitHub Pages. There is no ranking, authentication, reconnection, moderation or validated competitive team builder.
 - The downloadable v1.1 archive remains separate from the hosted simplified single-file preview and has **not** been uploaded as full expanded source.
+
+
+## New features: Custom OU teams (2026-10-27)
+The online experimental client now accepts the Pokémon Showdown team export format (including **species, moves, held items, abilities, natures, IVs, EVs, and Tera type**). Select **Gen 7 OU** or **Gen 9 OU**, paste a legal six-Pokémon team, and the server validates it with Showdown's TeamValidator before entering the queue. Random formats continue to auto-generate teams. Mechanics are executed on the authoritative Showdown simulator, not reproduced client-side. Mega Evolution and Z-Moves are generation-specific and require eligible team sets; Terastallization is Gen 9-specific.
+
+**Operations still required:** deploy the Node.js WebSocket server to a publicly reachable TLS-backed host, supply the wss:// endpoint to each player, and validate an end-to-end match. Static Pages deployment alone cannot make multiplayer live. This repo is not certified as a release-ready 1.0 build.
